@@ -12,6 +12,8 @@
         }
         body{
             background: #3F1A6B;
+            height: 100vh;
+            min-width: 1200px;
         }
     </style>
 </head>
@@ -20,5 +22,15 @@
 
 
     <script src="./followRect.js"></script>
+    <script>    
+        var can = document.getElementById('myCanvas')
+        can.width = document.body.offsetWidth
+        can.height = document.body.clientHeight
+        console.log(can.width)
+        console.log(can.height)
+        var myCanvas = new FollowRect()
+        myCanvas.init('myCanvas')
+        
+    </script>
 </body>
 </html>

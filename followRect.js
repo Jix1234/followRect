@@ -10,7 +10,7 @@ var FollowRect = function () {
         z: 800
     }
 
-    var rectangleSpace = 100 // 默认矩形间距
+    var rectangleSpace = 80 // 默认矩形间距
     var rotationAngle = 0.5 // 旋转角度
     var maps = []
 
@@ -33,7 +33,7 @@ var FollowRect = function () {
         canvas = typeof el === 'object' ? el : document.getElementById(el)
         canvasWidth = canvas.width;
         canvasHeight = canvas.height;
-        rectangleSpace = (canvas.width - 400) / 2 / 8
+        // rectangleSpace = (canvas.width - 400) / 2 / 8
 
         ctx = canvas.getContext('2d')
 
@@ -74,13 +74,13 @@ var FollowRect = function () {
         canvas.addEventListener("mousemove", function (e) {
             if (e.movementX > 0) { //向右
                 rotationAngle = Math.abs(rotationAngle)
-                if( maps[8].D[0] > 70 ){
+                if( maps[8].D[0] > 75 ){
                     return
                 }
             }
             if (e.movementX < 0) { //向左
                 rotationAngle = -Math.abs(rotationAngle)
-                if( maps[8].D[0] < -70 ){
+                if( maps[8].D[0] < -75 ){
                     return
                 }
             }
@@ -113,19 +113,19 @@ var FollowRect = function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight)
             _this.rotate()
             _this.batchDraw()
-        }, 1);
+        }, 2);
     }
 
     this.setRectangle = function (x, idx) { // 设置矩形坐标、样式
         //  [ x轴，y轴，z轴 ] A B 向内，D C向外
         // D  A 
         // C  B
-        var z = 200
+        var z = 400
         var rectangle = {}
-        rectangle.A = [x, -(canvasHeight / 2 - 100), -z / 2]
-        rectangle.B = [x, (canvasHeight / 2 - 100), -z / 2]
-        rectangle.C = [x, (canvasHeight / 2 - 100), z / 2]
-        rectangle.D = [x, -(canvasHeight / 2 - 100), z / 2]
+        rectangle.A = [x, -(canvasHeight / 2 - canvasHeight * 0.2), -z / 2]
+        rectangle.B = [x, (canvasHeight / 2 - canvasHeight * 0.2), -z / 2]
+        rectangle.C = [x, (canvasHeight / 2 - canvasHeight * 0.2), z / 2]
+        rectangle.D = [x, -(canvasHeight / 2 - canvasHeight * 0.2), z / 2]
         rectangle.startX = x
         rectangle.offsetX = 0
 
